@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingalasha - Video</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    video {
+      width: 100%;
+      height: 100vh;
+      object-fit: contain;
+      background: #000;
+    }
+  </style>
+</head>
+
+<body>
+
+  <video id="video" autoplay muted playsinline controls>
+    <source src="./ingalasha.mp4" type="video/mp4">
+    თქვენი ბრაუზერი ვიდეოს ვერ უკრავს.
+  </video>
+
+  <audio id="music" autoplay>
+    <source src="./ingainga.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const video = document.getElementById("video");
+    const music = document.getElementById("music");
+
+    async function startMedia() {
+      try {
+        await video.play();
+      } catch (error) {
+        console.log("ვიდეოს ავტომატური გაშვება ვერ მოხერხდა.");
+      }
+
+      try {
+        await music.play();
+      } catch (error) {
+        console.log("მუსიკის ავტომატური გაშვება დაბლოკილია.");
+      }
+    }
+
+    window.addEventListener("load", startMedia);
+  </script>
+
+</body>
+</html>
